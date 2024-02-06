@@ -1,24 +1,51 @@
-import logo from './logo.svg';
+import styled, { ThemeProvider } from 'styled-components';
 import './App.css';
-
+import Menu from './Components/Menu';
+import Navbar from './Components/Navbar';
+import { DarkTheme, LightTheme } from './utils/Theme';
+import { useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+import Home from './Pages/Home';
+import Video from './Pages/Video';
+const Container = styled.div`
+  display:flex;
+`
+const Main = styled.div`
+  flex:6.7;
+  background-color: ${({ theme }) => theme.bg};
+  color: ${({ theme }) => theme.text};
+`
+const Wrapper = styled.div`
+  padding: 22px 96px;
+`
 function App() {
+  const [darkMode, setdarkMode] = useState(true);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={darkMode ? DarkTheme : LightTheme}>
+      <Container>
+        <Router>
+          <Menu darkMode={darkMode} setdarkMode={setdarkMode} />
+          <Main>
+            <Navbar />
+            <Wrapper>
+              <Routes>
+                <Route path='/'>
+                  <Route index element={<Home/>} />
+                  <Route path='Video'>
+                    <Route path=":id" element={<Video/>}/>
+                  </Route>
+                </Route>
+              </Routes>
+            </Wrapper>
+          </Main>
+        </Router>
+      </Container>
+    </ThemeProvider>
   );
 }
 
