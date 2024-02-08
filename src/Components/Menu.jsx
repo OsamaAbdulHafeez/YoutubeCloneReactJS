@@ -109,9 +109,11 @@ const Menu = ({ darkMode, setdarkMode }) => {
                 <Hr />
                 <Login>
                     Sign in to like videos ,comment and subscribe
-                    <Button>
-                        <AccountCircleOutlinedIcon />SIGN IN
-                    </Button>
+                    <Link to="signin" style={{ textDecoration: "none" }}>
+                        <Button>
+                            <AccountCircleOutlinedIcon />SIGN IN
+                        </Button>
+                    </Link>
                 </Login>
                 <Hr />
                 <Title>BEST OF SOCIALTUBE</Title>
@@ -154,7 +156,7 @@ const Menu = ({ darkMode, setdarkMode }) => {
                 </Item>
                 <Item onClick={() => setdarkMode(!darkMode)}>
                     <SettingsBrightnessIcon />
-                    {darkMode?"Light":"Dark"} Mode
+                    {darkMode ? "Light" : "Dark"} Mode
                 </Item>
             </Wrapper>
         </Container >

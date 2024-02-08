@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
 import React from 'react'
+import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 const Container = styled.div`
@@ -7,16 +7,19 @@ const Container = styled.div`
   margin-bottom: ${(props) => props.type === "sm" ? "10px" : "45px"};
   cursor: pointer;
   display: ${(props) => props.type === "sm" && "flex"};
+  gap: ${(props)=>props.type === "sm" && "10px"};
 `
 const Image = styled.img`
   width: 100%;
   height:${(props) => props.type === "sm" ? "100px" : "202px"};
   background-color: #999;
+  flex: 1;
 `
 const Details = styled.div`
   display: flex;
   margin-top: ${(props)=>props.type === "sm" ? "0px" : "16px"};
   gap: 12px;
+  flex: 1;
 `
 const ChannelImage = styled.img`
   width: 36px;
@@ -24,27 +27,27 @@ const ChannelImage = styled.img`
   border-radius: 50%;
   background-color:#999;
   display: ${(props)=>props.type === "sm" && "none"};
+  
 `
 const Texts = styled.div`
   
 `
 const Title = styled.h1`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   margin: 0;
-  /* color:white; */
   color: ${({ theme }) => theme.text};
 `
 const ChannelName = styled.h2`
-  font-size: 16px;
+  font-size: 14px;
   /* color:white; */
-  color: ${({ theme }) => theme.textSoft};
   margin: 9px 0;
+  color: ${({ theme }) => theme.textSoft};
 `
 const Info = styled.div`
   /* color:white; */
-  color: ${({ theme }) => theme.textSoft};
-  font-size: 16px;
+  color:${({ theme }) => theme.textSoft};
+  font-size: 14px;
 `
 const Card = ({ type }) => {
   return (
